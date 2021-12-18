@@ -1,11 +1,15 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-
+/** этот класс может накладывать эффект на изображение
+ */
 public class Effects {
 
     public BufferedImage res;
-
+    /** это конструктор который принимает изображение и номер эффекта
+     * @param bm изображение
+     * @param ef номер эффекта
+     */
     public Effects(BufferedImage bm, int ef) {
         if (ef == 1) {
             this.res = blackWhite(bm);
@@ -18,7 +22,9 @@ public class Effects {
         }
     }
 
-
+    /** этот метод  принимает изображение и накладывает эффект черно-белое
+     * @param bm изображение
+     */
     public BufferedImage blackWhite(BufferedImage bm) {
         BufferedImage result = new BufferedImage(bm.getWidth(), bm.getHeight(), bm.getType());
 
@@ -47,7 +53,9 @@ public class Effects {
         }
         return result;
     }
-
+    /** этот метод  принимает изображение и накладывает эффект черно-белое
+     * @param img изображение
+     */
     public BufferedImage negative(BufferedImage img) {
         BufferedImage result = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
         int width = img.getWidth();
@@ -71,7 +79,9 @@ public class Effects {
         }
         return result;
     }
-
+    /** этот метод  принимает изображение и накладывает эффект черно-белое
+     * @param img изображение
+     */
     public BufferedImage shtamp(BufferedImage img) {
         BufferedImage result = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
         for (int x = 0; x < img.getWidth(); x++)
@@ -83,7 +93,9 @@ public class Effects {
 
         return result;
     }
-
+    /** этот метод обесвечивет пиксель
+     * @param rgb пиксель
+     */
     private static int rgbToGray(int rgb) {
         // split rgb integer into R, G and B components
         int r = (rgb >> 16) & 0xff;

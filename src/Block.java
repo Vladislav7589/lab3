@@ -10,9 +10,15 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 
-interface Copyable{
+
+/** этот интерфейс предназначен для копирования
+ * @author Vlad
+ */
+ interface Copyable{
     Object copy();
 }
+/** этот класс предназначен для копирует изображение
+ */
 class Image implements Copyable{
     BufferedImage imageCopy;
     public  Image(BufferedImage imageCopy){
@@ -25,7 +31,8 @@ class Image implements Copyable{
         return copy;
     }
 }
-
+/** этот класс предназначен выводить на экран картинку изменять её и сохранять
+ */
 public class Block extends JFrame {
 
     JSplitPane main, leftSplit;
@@ -40,7 +47,8 @@ public class Block extends JFrame {
     JComboBox comboBox = new JComboBox();
 
 
-
+    /** Этот главный метод который производит открытие картинки ее сохранение
+     */
     private Block() throws IOException {
         super("Effects");
         setSize(1500, 900);
@@ -141,7 +149,8 @@ public class Block extends JFrame {
 
     }
 
-
+    /** Этот метод заполняет панели приложения
+     */
     private void createLayout() throws IOException {
         createPanels();
 
@@ -155,13 +164,16 @@ public class Block extends JFrame {
         main.setOneTouchExpandable(true);
         getContentPane().add(main);
     }
-
+    /** Этот метод создает главные панели приложения
+     */
     private void createPanels() throws IOException {
         createUP();
         createDown();
         createInstruments();
 
     }
+    /** Этот метод создает верхнюю левую панель
+     */
     private void createUP() throws IOException {
         upImage = new JPanel(new GridLayout(1, 1));
         upImage.setMinimumSize(new Dimension(600, 100));
@@ -169,12 +181,14 @@ public class Block extends JFrame {
         sourceImage = new JLabel(new ImageIcon(source));
         upPanel = new JScrollPane(sourceImage);
     }
-
+    /** Этот метод создает нижнюю левую панель
+     */
     private void createDown() {
         downImage = new JPanel(new GridLayout(1, 1));
         downImage.setMinimumSize(new Dimension(600, 100));
     }
-
+    /** Этот метод создает панель инструментов
+     */
     private void createInstruments() {
         rightInstrument = new JPanel(new GridLayout(20, 7));
         comboBox.setEditable(true);
@@ -189,7 +203,6 @@ public class Block extends JFrame {
         button.setFont(two);
         comboBox.setFont(two);
         rightInstrument.add(comboBox);
-
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Object selectedItem = comboBox.getSelectedItem();
@@ -221,7 +234,8 @@ public class Block extends JFrame {
         });
         rightInstrument.add(button);
     }
-
+    /** Этот метод производит настройку экрана перед перерисовкой
+     */
     private void Settings() {
         JLabel right = new JLabel(new ImageIcon(rezult));
         downPanel = new JScrollPane(right);
